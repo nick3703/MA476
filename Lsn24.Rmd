@@ -1,0 +1,54 @@
+---
+title: "Lsn24"
+author: "Clark"
+header-includes:
+   - \usepackage{bbm}
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Admin
+
+Recall that we compare Estimators, $\hat{\theta}$ by looking at:
+
+\vspace{2.in}
+
+If our estimators are unbiased, then we know that
+
+\vspace{1.in}
+
+It may be of interest, then, to find our unbiased estimator that has a variance as small as possible.  In later lessons we'll prove, in some cases, that our estimator has the smallest possible variance for all unbiased estimators, but for now we will concern ourselves with finding the relative efficiency between two unbiased estimators.  This is
+
+\vspace{2.in}
+
+So, let's work through an example from the text.  Recall that for our German tank problem we found two estimators, $\hat{\theta}_1=2 \bar{Y}$ and $\hat{\theta}_{mle}=Y_{(n)}$.  We noted that $\hat{\theta}_{mle}$ had lower MSE than $\hat{\theta_1}$, but $\hat{\theta_1}$ was an unbiased estimator while $\hat{\theta}_{mle}$ was not.  Let's say we create an unbiased estimator
+
+$$\hat{\theta}_2 = \frac{n+1}{n} Y_{(n)}$$
+
+Now, say, we want to compare our two estimators, it makes sense to just look at the relative efficience between the two, so let's do this
+
+\vspace{4.in}
+
+Let's work through an example on the boards, let's look at problem 9.1 in the text.  Recall from Exercise 8.8 that only $\hat{\theta}_1$, $\hat{\theta}_2$, $\hat{\theta}_3$, and $\hat{\theta}_5$ were unbiased. 
+
+\newpage
+
+Let's try one that is perhaps a bit trickier.  Look at problem 9.3, let's first show $\hat{\theta}_1$ and $\hat{\theta}_2$ are unbiased, then compare the efficiency of the two estimators.
+
+\vspace{4.in}
+
+Next lesson we are going to talk about what it means for an estimator to be \textit{consistent}.  Note that consistency formally requires that $\hat{\theta}$ \textit{Converges in probability} to $\theta$.  This means that for any $\epsilon >0$:
+
+\vspace{2.in}
+
+Practically, for unbiased estimators, this means that $V(\hat{\theta}_n)\to 0$.  For example, if we use $\bar{Y}_n$ as an estimator of $\mu$ we have:
+
+\vspace{2.in}
+
+
+
+
+\vspace{3.in}

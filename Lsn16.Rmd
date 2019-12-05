@@ -1,0 +1,73 @@
+---
+title: "Lsn17"
+author: "Clark"
+header-includes:
+   - \usepackage{bbm}
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Admin
+
+Let $Y_1,Y_2,\cdots, Y_n$ be independent and identically distributed random variables all drawn from $F(y)$ with pdf $f(y)$.  We \textit{define} the order statistics as $Y_{(1)},Y_{(2)},\cdots,Y_{(n)}$ where $Y_{(1)} \leq Y_{(2)} \leq \cdots \leq Y_{(n)}$.  Two very special order statistics are $Y_{(1)}$ and $Y_{(n)}$.  The reason these are special is connsider an actual experiment.  If we conduct an experiment $n$ times, a natural thing to ask is what is the smallest value we should expect to see and what is the largest value we should expect to see.
+
+In order to answer that question for a given distribution we need the density function of $Y_{(1)}$ or $Y_{(n)}$.  Note that this is not, necessarily, the same as the density function of $Y_i$.  For example, let's say $Y_{1},Y_{2},Y_{3}$ are all drawn from a Uniform (0,1).  In order to simulate the density of $Y_{(3)}$ we estimate the PDF we could do
+
+```{r}
+max.y<-c()
+for(i in 1:5000){
+  samp<-runif(3)
+  max.y[i]<-max(samp)
+}
+hist(max.y)
+```
+Here we see the density of the minimum is clearly NOT Uniform(0,1).  In order to find the PDF of the maximum we can use the CDF method
+
+
+\vspace{2.in}
+
+Now if we take the derivative we get:
+
+\vspace{2.in}
+
+So for our example above we can calculate the PDF of $Y_{(3)}$ as:
+
+\vspace{3.in}
+
+Similarly for $Y_{(1)}$ we can use the CDF method:
+
+\newpage
+
+Note above it was a lot easier to deal with the compliment.  Let's find $Y_{(1)}$ for $Y_1,Y_2,Y_3 \sim \mbox{Exp} (1)$.
+
+\vspace{3.in}
+
+Verify that the above is a valid PDF.
+
+\vspace{2.in}
+
+The text goes on to talk about the joint density of the order statistics which is:
+
+\vspace{2.in}
+
+This isn't super useful except in some odd casees that we may or may not get to in this course.  But intuitively it sort of makes sense.
+
+Theorem 6.5. is the generalization of the PDF of the order statistic for any $f(y_{(k)})$.  In this case, the density function can really be thought of as similar to the grade assigning problem that we had in HW 2.  I "assign" $k-1$ of my Random Variables to be less than $y_{k}$, one value of my Random variable to be $y_k$, and $n-k$ random variables to begreater than $y_k$.  Let's look at Theorem 6.5 and see where all those pieces come in to play.
+
+
+\newpage
+
+If $X_1,X_2,\cdots,X_5$ are independent Exponential RVs with mean 1, what is the density of $X_{(3)}$?
+
+
+\vspace{3.in}
+
+Using Theorem 6.5, what is the Joint Density of $X_{(1)}$ and $X_{(3)}$
+
+\vspace{3.in}
+
+Let $Y_1$ and $Y_2$ be independent Uniform (0,1) random variables.  Find $P(2 (Y_{(1)})< Y_{(2)})$ 
+

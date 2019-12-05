@@ -1,0 +1,129 @@
+---
+title: "Lsn34"
+author: "Clark"
+header-includes:
+   - \usepackage{bbm}
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Admin
+
+
+Say we are testing, generically $H_0: \theta = \theta_0$ vs $H_a: \theta> \theta_0$.  Our first step is determining what our test statistic is.  For large sample tests it may make sense to us:
+
+\vspace{2.in}
+
+When we use this as our test statistic it has a distribution of $Z \sim N(0,1)$.  From here we either fix or determine our rejection region so $P(Z > z)=\alpha$.  Note here we can also solve for our rejection region in terms of $\hat{\theta}$
+
+\vspace{2.in}
+
+As we previously discussed, the probability of commiting a Type II error is:
+
+\vspace{2.in}
+
+In order to find this we need to stipulate a value for $\theta_a > \theta_0$.  In terms of $k$ we are searching for:
+
+$$P(\hat{\theta}\leq k| \theta=\theta_a)$$
+
+Note, for $\hat{\theta}$ we still have the CLT, so if $\theta=\theta_a$ our $Z$ value is NOT $\frac{\hat{\theta}-\theta_0}{\sigma_{\hat{\theta}}}$ but rather since we are assuming $\theta=\theta_a$ we have:
+
+$$Z_a = \frac{\hat{\theta}-\theta_a}{\sigma_{\hat{\theta}}}$$
+Note the difference here.  So, the probability of commiting a Type II error is the probability that 
+
+$$P(\hat{\theta}\leq k| \theta=\theta_a)$$
+Or, $P(Z_a \leq \frac{k-\theta_a}{\sigma_{\hat{\theta}}})$
+
+Again we have $Z_a \sim N(0,1)$ so the calculations can be performed straight forwardly.  
+
+In Exercise 10.19 WMS state
+
+The output voltage for an electric circuit is specified to be 130.  A sample of 40 independent readings on the voltage for this circuit gave a sample mean of 128.6 and standard deviation 2.1.  Test the hypothesis that the average coutput voltage is 130 against the alternative that it is less than 130.  Use a test with level .05.
+
+First we define our test statistic
+
+\vspace{2.in}
+
+In R we could write
+
+```{r}
+Z<- (128.6-130)/(2.1/sqrt(40))
+Z
+RR<-qnorm(.05)   #Lower Tail test so .05 here
+Z<RR
+```
+
+Now, we note that if the voltage falls as low as 128, serious consequences may result.  What is the probability of a type II error if $\mu=128$?.  Note here that 
+
+```{r}
+k<-2.1/sqrt(40)*RR+130
+#In terms of Theta, our RR is 
+cat(-Inf,k,sep=",")
+```
+
+So to find Power we need to find the probability that $\hat{\mu}$ is not in the Rejection if, indeed $\mu=128$.  If we are not in the rejection region than we have not observed $\hat{\mu}=129.4538$ or lower, so we need the probability $\hat{\mu} > 129.45$ given $\mu =128$, or in other words we need 
+
+$$P\left(\frac{\hat{\mu}-128}{\frac{2.1}{\sqrt{40}}} > \frac{129.4538-128}{\frac{2.1}{\sqrt{40}}}\right)$$
+
+Or, as we know the distribution of $\frac{\hat{\mu}-128}{\frac{2.1}{\sqrt{40}}}$ is $N(0,1)$ we want
+
+```{r}
+1-pnorm((129.4538-128)/(2.1/sqrt(40)))
+```
+So the probability of committing a Type II error is pretty low.  What if  we have serious consequences if the voltage falls below 129?  Then we would have:
+
+```{r}
+1-pnorm((129.4538-129)/(2.1/sqrt(40)))
+```
+Graphically what is going on is:
+
+\vspace{3.in}
+
+As we previously talked about, there's no such thing as a free lunch.  If you want a lower $\alpha$ you are going to get a higher $\beta$ (see picture above).  One way we can correct for this though is to change $n$.  If we change $n$ what happens to $Z$?
+
+Graphically if we change $n$ we get:
+
+\vspace{2.in}
+
+So, if we want a fixed value of $\alpha$ and a fixed value of $\beta$ the one lever we have to pull is $n$.  
+
+Recall that $\alpha$ is
+
+\vspace{1.in}
+
+And $\beta$ is
+
+\vspace{1.in}
+
+So if we fix $\mu_0$, $\mu_a$, $\alpha$ and $\beta$ we can solve for what our book calls $z_{\alpha}$ and $z_{\beta}$
+
+\vspace{1.in}
+
+So solving for $k$ yields
+
+\vspace{1.in}
+
+Letting these things be equal, we get a formula for $n$
+
+$$n=\frac{(z_{\alpha}-z_{\beta})^2 \sigma^2}{(\mu_{\alpha}-\mu_0)^2}$$
+
+Let's put all this together with exercises 10.42 and 10.43
+
+1.)  Write out Null/Alternative
+
+2.)  Find Test Statistic
+
+3.)  Find Rejection Region if given $\alpha$
+
+4.)  Determine Rejection Region in terms of $\hat{\theta}$, $k$
+
+5.)  Find $\frac{k-\theta_a}{\sigma_{\hat{\theta}}}$
+
+6.)  Calculate $\beta$
+
+7.)  Find $z_{\alpha}$ \begin{verbatim}qnorm(1-alpha)\end{verbatim}
+
+8.) Find $z_{\beta}$ \begin{verbatim}-qnorm(beta)\end{verbatim}

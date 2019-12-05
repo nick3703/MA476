@@ -1,0 +1,146 @@
+---
+title: "Lsn8"
+author: "Clark"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Admin
+Today we're going to play with more notions from joint density functions.  Recall a joint density function:
+
+\vspace{.4in}
+
+Let's go ahead and draw the shape for 
+\begin{align*}
+f(y_1,y_2)= 6 y_1^2 y_2 \mbox{ for }0 \leq y_1 \leq y_2 \mbox{ and } y_1+y_2 \leq 2
+\end{align*}
+
+and set up the integral to find $P(Y_1+Y_2)<1$ on the board
+
+```{r,echo=FALSE,warning=FALSE}
+library(plot3D)
+density<-function(x,y){
+  result<-6*x^2*y
+  return(result)
+}
+
+x.old<-.3
+y.old<-.5
+x.vec<-c()
+y.vec<-c()
+
+#Here I'm doing what's called a Metropolis Algorithm to simulate from problem 5.32
+for(l in 1:100000){
+  x.new<-runif(1,0,min(y.old,2-y.old))
+  numer.x<-density(x.new,y.old)
+  denom.x<-density(x.old,y.old)
+  accep<-min(1,numer.x/denom.x)
+  if(runif(1)<accep){
+    x.old<-x.new
+  }
+  y.new<-runif(1,x.old,2-x.old)
+  numer.y<-density(x.old,y.new)
+  denom.y<-density(x.old,y.old)
+  accep<-min(1,numer.y/denom.y)
+  if(runif(1)<accep){
+    y.old<-y.new
+  }
+  x.vec[l]<-x.old
+  y.vec[l]<-y.old
+}
+
+
+x_c <- cut(x.vec, 30)
+y_c <- cut(y.vec, 30)
+y.1.vals<-x.vec
+y.2.vals<-y.vec
+z <- table(x_c, y_c)
+z.test<-z/sum(z)
+#Joint PDF
+image2D(z.test,x=seq(0,1,1/nrow(z)),y=seq(0,2,2/ncol(z)))
+```
+
+As a side note, statisticians rarely actually do integrals in practice.  Above I simulated from the joint density $6 y_1^2 y_2$ and if I can simulate from it, I can find the area underneath the plane that matche the conditions I specified.  For example, if my simulated $y_1$ and $y_2$ values are in vectors called y.1.vals and y.2.vals I could just do
+
+```{r}
+tot<-y.1.vals+y.2.vals
+length(tot[tot<1])/length(tot)
+```
+One question I might be interested in asking is, what is the probability density function of $Y_1$ if I average over all my possible values of $Y_2$.  For instance, if we consider our die rolling experiment from last class, where we had $Y=\mbox{max}\{X_1,X_2\}$ and $Z=|X_1-X_2|$.  Recall our joint pmf could be expressed in table form:
+
+
+```{r echo=FALSE, warning=FALSE}
+library(knitr)
+my.df<-matrix(c(1/36,0,0,0,0,0,1/36,2/36,0,0,0,0,1/36,2/36,2/36,0,0,0,1/36,2/36,2/36,2/36,0,0,1/36,2/36,2/36,2/36,2/36,0,1/36,2/36,2/36,2/36,2/36,2/36),byrow=T,nrow=6,ncol=6)
+colnames(my.df)<-c("Z=0","1","2","3","4","5")
+row.names(my.df)<-c("Y=1","2","3","4","5","6")
+kable(my.df)
+
+```
+
+If we look at the row total for row 1 we would have $p(Y=1,Z=0)+p(Y=1,Z=1)+p(Y=1,Z=2)+p(Y=1,Z=3)+p(Y=1,Z=4)+p(Y=1,Z=5)$.  If we think about this another we and we recall the properties of mutually exclusive events we can think of this as:
+
+\vspace{.5in}
+
+Geometrically, what we are doing is:
+
+\vspace{1.in}
+
+The exact same notions can be extended to a joint pdf.  For example, using the above joint pdf, we can look at the projection on to the x axis:
+
+
+```{r,warning=FALSE,echo=FALSE,fig.height=3}
+library(ggplot2)
+my.df2<-data.frame(y1val=y.1.vals)
+ggplot(data=my.df2,aes(y1val))+geom_density()
+```
+
+But this, of course, is a crude approximation.  To find the function we must 'sum' over the $y_2$ values.  Set up an integral to "get rid" of the $y_2$ values (see 5.4 on pg 236).
+\vspace{2.in}
+
+We can also calculate the conditional density.  Going back to our picture what we have is:
+
+\vspace{2.in}
+
+Let's find $f(y_2|y_1)$
+\vspace{2.in}
+
+Use this to find $P(Y_2<1 | Y_1 = .6)$
+
+\vspace{2.in}
+
+Again, if we have a way to simulate we can \textit{estimate} this, here by
+
+```{r}
+cond.y.2<-y.2.vals[y.1.vals>.59&y.1.vals<.61]
+
+length(cond.y.2[cond.y.2<1.1])/length(cond.y.2)
+```
+
+Finally, our reading discusses independence.  Recall that $X$ and $Y$ are independent events iff $P(X \cap Y)=P(X)P(Y)$.  Similarly, $Y_1$ and $Y_2$ are independent if the joint pdf (or pmf) $f(y_1,y_2)=f_1(y_1) f_2 (y_2)$.  In example 5.11 the book has:
+
+\vspace{.5in}
+
+Note the differences here between this problem and our above problem.  Why do I really not have to do any calculations to show that $Y_1$ and $Y_2$ are not independent for
+
+\begin{align*}
+f(y_1,y_2)= 6 y_1^2 y_2 \mbox{ for }0 \leq y_1 \leq y_2 \mbox{ and } y_1+y_2 \leq 2
+\end{align*}
+
+
+Perhaps the most important take away from the discussion on independence is the converse of theorem 5.4.  If two events are independent, then we can immediately write down the joint density of the events.  For next lesson, consider $Y_1 \sim N(0,1)$ and $Y_2 \sim \mbox{Ga}(3,2)$ write down $f(y_1,y_2)$  Don't forget the support.  Use the joint density to find $P(Y_1 < 0, Y_2 < 3)$ (Note if you use R pgamma requires shape=3, scale=2)
+
+
+\textit{Extra Credit, 2 pts}
+
+Again looking at problem 5.32.  If we plot the function $f(y_1,y_2)=6 y_1^2 y_2$ on the support given in the problem, it looks like we have an increasing function that peaks at $y_1=y_2=1$ giving a value of $f(y_1,y_2)=6$.  However, when I look at the projection on to the y_1 (or x) axis the book (correctly) states that the marginal density is a beta density with $\alpha=3$ and $\beta=2$.  If we plot this beta function we get something like
+
+```{r}
+y1<-seq(0,1,.001)
+marginal.density.of.y1<-dbeta(y1,3,2)
+plot(y1,marginal.density.of.y1,type="l")
+```
+How can it be that our joint density is peaked at $y_1=1$ and $y_2=1$?  Write a short paragraph explaining what is going on here.

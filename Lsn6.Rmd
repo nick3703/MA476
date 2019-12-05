@@ -1,0 +1,66 @@
+---
+title: "Lsn6"
+author: "Clark"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Admin
+
+
+#Putting the Pieces together
+
+Last night's readings focused on some convenient distributions for our random variables.  Often times we just \textit{assume} our random variable, $X$ has a distribution for the sake of convenience.  For example, if we let $X$ be the height of a randomly selected student, it might make sense that $X\sim N(\mu, \sigma)$.  However, as we will show later in class, other times we will make use of tools such as the central limit theorem to \textit{prove} that our random variables have a distribution.  But for today we are making assumptions.
+
+Once we assume our random variables have a distribution, we can use the pdf of that distribution and properties of expectation to find probabilities and to find expectations of functions of the random variable.
+
+For instace:
+
+Assuming that $X\sim N(\mu,\sigma)$, what are we saying about the value $X$ can take on?  Let's say we define a new random variable, $Y=3X(X-1)+5$.   Keeping in mind that $E[X]=\mu$ and $Var[X]=\sigma^2$ find $E[Y]$.  
+
+\vspace{3.in}
+
+If the support of $X$ is $\mathbb{R}$ what can we say about the support of $Y$?  Can we conclude that $Y$ is Normally distributed?
+
+\vspace{1.in}
+
+Now let $Z=\frac{X-E[X]}{\sigma}$.  Find $E[Z]$.
+
+\vspace{3.in}
+
+Remembering, from MA206, that $Var[aX]=a^2 Var[X]$ and $Var[X+b]=Var[X]$.  Find $Var[Z]$.
+
+\vspace{3.in}
+
+One of the most important things we will do in the course is visually recognize probability distributions.  For instance, if have a function
+\begin{align*}
+&f(x)=\exp \left(\frac{-1}{2}[x-3]\right)
+\end{align*}
+
+We can squint our eyes and see that this is \textit{almost} the probability density function of a Normal random variable.  So, if we were asked to calculate
+
+\begin{align*}
+& \int_{-\infty}^{\infty}f(x) dx
+\end{align*}
+
+I contend you could do this integral in your head...
+
+#Gamma Distribution
+
+The notation is oftentimes what scares us the most.  For instance let's look at the Gamma PDF on page 185 of WMD.  While this looks intimidating, one thing to keep in mind is that the gamma function (different than the Gamma PDF) is just a generalization of a factorial.  As pointed out in our text $\Gamma (n) = (n-1)!$.  So, for instance, let's look at problem 4.110 and let's put the pieces together.  What is the distribution of $Y$?  Once we have that how do we find $E[Y]$ and $Var[Y]$?
+
+\vspace{2.in}
+
+The final distribution our book (though not in our reading)  talks about is the Beta distribution which is interesting because the \textit{support} of the distribution is (0,1) vice $\mathbb{R}$ for the Normal or $\mathbb{R}^+$ for the Gamma.  A useful skill is demonstrated in finding the expected value of a Beta distribution
+
+\vspace{3.in}
+
+Using this let's find $E[Y^2]$ where $Y\sim Be(\alpha,\beta)$.
+
+\vspace{3.in}
+
+Remember that our random variables are mathematical tools.  They help us.  They are not reality.  But the purpose is not to fit a situation exactly, but rather as an inferential tool.  If we have a probability distribution that we think our data comes from we will see how we can use the data to estimate the parameters of the distribution.  If we \textit{know} the distribution we can find the probability of events happening.  For instace, if we know that $Z \sim Be(1,3)$ we can find $P(Z \in (.3,.7))$ by integrating the PDF from .3 to .7.
+

@@ -1,0 +1,84 @@
+---
+title: "Lsn9"
+author: "Clark"
+header-includes:
+   - \usepackage{bbm}
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Admin/HW
+
+Recall that for a general PDF, $f(y)$ we could find $E[g(Y)]$ through
+
+\vspace{.4in}
+
+The same concepts can be applied to joint PDFs, $f(y_1,y_2)$ to find $E[g(Y_1,Y_2)]$.  For example, if our PDF is $f(y_1,y_2)=6 (1-y_2)\mathbbm{1}{(0 \leq y_1 \leq y_2) }\mathbbm{1}{(y_1 \leq y_2 \leq 1) }$ we can find $E[Y_1-3Y_2]$
+
+\vspace{.5in}
+
+Note that even if $g(Y_1,Y_2)=Y_1$ the same process would apply.  However, if we marginal PDF for $Y_1$, say $f_1 (y_1)$ we could integrate with respect to the marginal PDF only.  To see this note:
+
+\vspace{.5in}
+
+Let's use this to find $E[Y_1]$ and $E[Y_2]$ for our above joint PDF.
+
+\vspace{1.in}
+
+The same properties for expectation that we previously found still apply (Theorems 5.6-5.8) but there's one new theorem that will be extremely important in our future work, namely that if $Y_1$ and $Y_2$ are \textbf{independent} then $E[g(Y_1)h(Y_2)]=E[g(Y_1)]E[h(Y_2)]$ which is a direct consequence for the fact that $f(y_1,y_2)=f_1(y_1)f_2(y_2)$ for independent random variables.
+
+This, in some cases, makes our life much easier.  For example, let's consider problem 5.74 in our text.  The joint PDF here is $f(y_1,y_2)=1\mathbbm{1}{(0 \leq y_1 1) }\mathbbm{1}{(0 \leq y_2 \leq 1) }$  Without much thought, I can immediately say that $y_1$ and $y_2$ are independent.  Why?  What do you think the marginal densities for $y_1$ and $y_2$ are?
+
+\vspace{1.in}
+
+Now that I know this, what is $E[Y_1 Y_2]$?  Given that the second moment for a uniform random variable is $\frac{1}{3}(\theta_1+\theta_2)^2$ what is $E[(Y_1 Y_2)^2]$.
+
+\vspace{1.in}
+
+#Covariances/Correlations
+
+A common use for expectations for jointly distributed random variables is in the calculation of covariances or correlations.  We can think of a correlation as quantifying how one variable behaves as another variable changes.  For example, if our Correlation is close to 1, high values for $X$ would suggest likely high values for $Y$ if $X$ and $Y$ have joint pdf $f(x,y)$.  By far the most common way to calculate Covariance is by:
+
+\vspace{1.in}
+
+And correlation by:
+
+\vspace{1.in}
+
+If $X$ and $Y$ are independent, we have $E[XY]=E[X]E[Y]$ from above, so therefore $Cov[X,Y]=$?
+
+\vspace{.5in}
+
+Answering problems about Correlation/covariance often just take book keeping and pushing through lots of integrals.  For example, let's look at $f(y_1,y_2)=6 (1-y_2)\mathbbm{1}{(0 \leq y_1 \leq y_2) }\mathbbm{1}{(y_1 \leq y_2 \leq 1) }$ and say we want to find the Correlation between $Y_1$ and $Y_2$ what expected values do we need?
+
+\vspace{1in}
+
+Here's one of those instances where I'd probably just use Mathematica or another tool (not that I have to, I've got some awesome Calculus skills!)
+
+Let $Y_1$ and $Y_2$ be uncorrelated random variables and consider $U_1= Y_1+Y_2$ and $U_2= Y_1-Y_2$.  Find $\mbox{Cov}(U_1,U_2)$ in terms of the Variance of $Y_1$ and Variance of $Y_2$
+
+\newpage
+
+#Conditional Expectation
+
+This is not covered in our syllabus (though it is in WMS section 5.11), but I think it's important so we'll just touch on it a bit here.  The same thing we did above we can do for conditional PDFs.  Recall we found $f(y_1 | y_2)=\frac{f(y_1,y_2)}{f_2 (y_2)}$.  We can use this conditional PDF in our expectation function by finding 
+
+\begin{align*}
+E[X|Y=y_2]=\int_{-\infty}^{\infty} X f(x|y) dy
+\end{align*}
+
+For example, our book has $f(x,y)=\frac{1}{2}\mathbbm{1}{(0 \leq x \leq 2) }\mathbbm{1}{(x \leq y \leq 2)}$
+
+and finds that $E[Y_1|Y_2=y_2]=\frac{y_2}{2} \mathbbm{1} {(0 \leq y_2 \leq y_2)}$
+
+One of the coolest uses of this is in what's called the law of iterated expectation.  Often times we are presented with a problem where we say to ourselves, it sure would be easier to solve this problem if I had more information. 
+
+For example:
+
+A quality control plan for an assembly line involves sampling $n=10$ finsihed items per day and counting $Y$, the number of dectives.  If $p$ denotes the probability of observing a defect, then $Y\sim \mbox{Binom}(n,p)$.  But $p$ varies from day to day and is assumed to have a distribution $p \sim \mbox{Unif}(0,1/4)$.  What is the expected value of $Y$?
+
+In this problem it would be \textbf{much} easier to find $E[Y]$ if we \textit{knew} $p$.  However we don't...  One problem solving strategy is to use what is called iterated expectation using the fact $E[Y]=E[E[Y|p]]$.  That is, we first take the expected value of $Y$ assuming $p$ is known, then find the expected value of $p$.  For this case, if we assume $p$ is known, then $E[Y|p]=np$ by properties of the Binomial distribution.  Then we take the outer expectation $E[np]$ relying on the distribution of $p$ we know $E[p]=\frac{1}{8}$.  So therefore, $E[Y]=E[E[Y|p]]=E[np]=n\frac{1}{8}=1.25$.
+

@@ -1,0 +1,79 @@
+---
+title: "Lsn10"
+author: "Clark"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Admin/Questions
+
+The $k$th moment (sometimes called the raw moment and denoted as $\mu_k'$) of a random variable is defined as $E[Y^k]$ and can always be found through either:
+
+\vspace{.5in}
+
+or in the case of discrete random variables
+
+\vspace{.5in}
+
+However, another method of finding the moments can be found by calculating $E[e^{ty}]$.  Why this expectation?  Recall that the Taylor series expansion about 0for $e^x$ is:
+
+\vspace{.5in}
+
+So, assuming we have finite moments we can write:
+
+\vspace{2in}
+
+
+The neat thing about this is if we consder the first derivative we end up with:
+
+\vspace{1.in}
+
+Now if we evaluate this function we have $\mu_1'$.
+
+Continuing on in this manner, the second derivative yields:
+
+\vspace{1.in}
+
+Which again, evaluating at $t=0$ gives us the second moment.  
+
+Suppose that the waiting time for the first customer to enter a retail shop after 9:00 A.M. is a random variable $Y\sim\mbox{Exp}(\theta)$.  Let's prove the result in the back of our book, that the MGF is $\frac{1}{1-\theta t}$ and use it to find $E[Y]$ and $E[Y^2]$
+
+While this is all well and good, a more common use for MGFs is what's pointed out on pg 141 of our text.  Specifically, if an MGF exists, it is \textit{unique}.  This gives us an alternative way to characterize a distribution outside of a pdf.  
+
+To really take advantage of this, we need a few additional facts proven about MGFs.  Specifically, if $Y$ is a random variable with MGF $m(t)$ and $U$ is given by $U=aY+b$, the MGF of $U$ is $e^{tb} m(at)$.  To see this, let's start at:
+
+\begin{align*}
+m_u(t)& = \\
+& \mbox{Next we substitute in }U=ay+b\\
+& = \\
+& \mbox{Now pull out and regroup to arrive at}\\
+& = 
+\end{align*}
+
+So, using this result, let $Y \sim N(\mu,\sigma)$ and, using the result in the back of the book that the mgf of a Normal random variable is $\exp \left(\mu t + \frac{t^2 \sigma^2}{2}\right)$, find the mgf and hence the distribution of $X=-3Y +4$
+
+\vspace{3.in}
+
+Let's practice a bit.
+
+Keeping in mind that the formula for the binomial expansion is $(x+y)^n=\sum_{i=0}^n  {n \choose i} x^{n-i} y^i$, argue that the mgf for a binomial random variable is $(p e^{t}+(1-p))^n$
+
+\vspace{2.in}
+
+Keeping the above result in mind, what random variable has the mgf $(.6 e^t +.4)^3$?
+
+\vspace{2.in}
+
+
+Find the MGF for a Uniform(0,1) random variable.
+
+\vspace{2.in}
+
+Suppose $Y$ is a Uniform (0,1) random variable.  What is the mgf of $W=3Y$?  What is the distribution of $W$?
+
+\textit{Extra Credit - 2 pts}  Use the MGF we found above to prove that the expected value of a Uniform (0,1) is 1/2.  (Hint: L'Hopital's may help here)
+
+Argue carefully that if $Y\sim N(0,1)$ it must be that $E[Y^k]=0$ for all odd $k$

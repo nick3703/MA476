@@ -1,0 +1,107 @@
+---
+title: "Lsn15"
+author: "Clark"
+header-includes:
+   - \usepackage{bbm}
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Admin
+
+
+One problem, three different ways:
+
+Consider $X\sim \mbox{Gamma}(\alpha=3,\beta=2)$ and $Y\sim \mbox{Gamma}(\alpha=5,\beta=2)$ and $X$ and $Y$ are independent.  We are intrerested in the density of $Z=X+Y$.  Using the CDF method, find the density of $Z$.  
+
+
+\vspace{3.in}
+
+Using the method of transformations.  I will find the density of $Z$.
+
+\vspace{3.in}
+
+\newpage
+
+Now, let's learn the easier way to do this.  Recall that we already used MGFs to find the density of $U=aY+b$ by recognizing
+
+\begin{align*}
+M_U(t)& =E[e^U]\\
+& = E[e^{aY+b}]\\
+& = e^b E[e^{aY}]\\
+& = e^b M_Y(at)
+\end{align*}
+
+We also can do something similar to find the distribution of $U=X_1+X_2$ if $X_1$ and $X_2$ are independent. Notice, we can write:
+
+\begin{align*}
+M_U(t)&=E[e^U]\\
+&= E[e^{X_1+X_2}]\\
+&= E[e^{X_1}]E[e^{X_2}]\\
+\end{align*}
+
+Why is this last line true?  What allows us to break up the expectation like this?
+
+\vspace{.3in}
+
+Now we note that $E[e^{X_1}]E[e^{X_2}]=M_{X_1}(t)M_{X_2}(t)$.  So, if we have a linear combination of independent random variables, we can take the product of the MGFs.  IF we recognize the resulting MGF, due to Theorem 6.1 we can jump from the MGF to the PDF.
+
+So let's revisit the density of $Z=X+Y$ from before.
+
+\vspace{2.in}
+
+So, for a multivariate transformation, as long as it is a linear transformation, MGFs offer a possible solution for the resulting density.  However, we may be out of luck if we don't recognize the new MGF as we don't have a smooth way to go from MGFs to PDFs.
+
+\newpage
+
+A final use for MGFs is for univariate transformation, we can make a substitution directing into the MGF and see if we recognize the resulting MGF.  For example, let's consider
+
+$$f(x)=\theta(1-x)^{\theta-1} \mathbbm{1}{(0 <x < 1) }$$
+And way we want to find the density of $Y= - \log (1-x)$.  We could do the following:
+
+$M_Y(t)=E[e^{yt}]=E[e^{-\log(1-x)t}]=E\left[\left(\frac{1}{1-x}\right)^t\right]$
+
+Now, if we remember how to find Expected values of functions, we note that we can solve for this using
+$$\int_{0}^{1} \left(1-x\right)^{-t}\theta(1-x)^{\theta-1} dx$$
+Let's not run to Mathematica, but work this through.
+
+
+\vspace{2.in}
+
+Do we recognize the resulting MGF?  What if manipulated it slightly?
+
+Do the same problem another way.
+
+\vspace{3.in}
+
+In our previous two examples we sort of get lucky.  The MGF method works well when we are dealing with random variables that are in the family of 'known' distributions.  It turns out that the PDF I gave you above was actually a Beta distribution with $\alpha=1$ and $\beta=\theta$.  In general, if I have known distributions, using the MGF method might work out well as most of our known distributions are related to one another.
+
+Next lesson we will close out our discussion of transformations by talking about multivariable transformations.  This transformation method we have already seen, but if we have a multivariate density, $f_{Y_1,Y_2}(y_1,y_2)$, say we want to find the distribution of $U=Y_1 Y_2$, or the distribution of $V=\frac{Y_1}{Y_1+Y_2}$, we can use the transformation technique using Jacobians.
+
+The first step is to let $U=h_1(y_1,y_2)$ and $V=h_2(y1,y_2)$, then if $h_1$ and $h_2$ are \textbf{one-to-one transformations} and we can express $y_1$ and $y_2$ as inverse functions, $y_1=h_1^{-1}(u,v)$ and $y_2=h_2^{-1}(u,v)$ we can write 
+
+$$f_{U,V}(u,v)=f_{Y_1,Y_2}(h_1^{-1}(u,v),h_2^{-1}(u,v)) |J|$$
+Where we let $|J|$ denote the absolute value for the Jacobian (see pg. 326).
+
+For example, let's go back over what I did 
+
+Consider $X\sim \mbox{Gamma}(\alpha=3,\beta=2)$ and $Y\sim \mbox{Gamma}(\alpha=5,\beta=2)$ and $X$ and $Y$ are independent.  We are intrerested in the density of $Z=X+Y$.  Using the method of transformations.  I will find the density of $Z$.
+
+
+I let $z=h_1(x,y)=x+y$ and $v=h_2(x,y)=y$.
+
+This implies $h_2^{-1}(z,v)=v=y$ and $h_1^{-1}(z,v)=z-v=x$
+
+My Jacobian becomes:
+\vspace{1.in}
+
+Substituting in, I get:
+
+\vspace{3.in}
+
+Which is the \textbf{Joint Density} of $Z$ and $V$.  Which isn't really what I want.  I want the marginal density of $Z$, so I need to integrate out $V$.
+
+Note that in general things aren't so nice and we have to be \textit{really} careful about the support of our new random variables (as we showed above)

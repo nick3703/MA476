@@ -1,0 +1,74 @@
+---
+title: "Lsn3"
+author: "Clark"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Admin
+
+#Law of Total Probability
+
+Start with a sample space, $S$, and define a \textit{Partition} of $S$
+
+\vspace{1in}
+
+Now note for any set $A\subset S$ we can write:
+
+\begin{equation*}
+A = (A \cap B_1) \cup (A \cap B_2) \cup \cdots \cup (A \cap B_k) \\
+\end{equation*}
+
+What can we say about $(A \cap B_1) \cap (A \cap B_2)$?
+
+\vspace{1in}
+
+Now, what can we say about $P(A)$?
+
+\vspace{1in}
+
+As long as we assume $P(B_j)\neq 0$ we can write $P(A | B_j)P(B_j) = P(A \cap B_j)$ which, from above, leads us to the \textbf{Law of Total Probability}
+
+\newpage
+
+At my high school, me and all the other cool kids used to play Risk some weekends.  In the board game Risk sometimes the attacker gets to roll 2 dice and the defender only gets to roll 1 die.  The attacker wins if \textit{at least one} of his die is \textbf{higher} than the defenders.  Who has the advantage in this situation?
+
+\begin{align*}
+& A \equiv \mbox{Event the Attacker Wins}\\
+& D_i \equiv \mbox{Event the defenders roll is }i
+\end{align*}
+
+\newpage
+#Bayes Rule
+
+Sometimes on the way to finding $P(A_i|B)$ its a lot easier to find $P(B|A_i)$
+
+Claim: $P(A_i|B)=\frac{P(B|A_i)P(A_i)}{\sum_{j=1}^k P(B|A_j)P(A_j)}$
+\vspace{.2in}
+
+Proof:
+
+\vspace{5in}
+Problem 2.134 in WMD
+
+\newpage
+
+#Random Variables
+
+Formally, a random variable is a mapping from $S \to \mathbb{R}$ for sample points, $s \in S$. Random variables are not necessarily something that can be physically realized.  They are things statisticians make up to help us in our probability calculations.  We use random variables to conceptualize a real situation.
+
+A pictures:
+
+\vspace{3.in}
+
+Flip two coins, what is our sample space?
+
+\vspace{2.in}
+
+Let $X(s)\equiv \mbox{Number of heads}$.  What outcomes map to $X(s)=1$?  What other values can $X$ take on?
+
+\vspace{.5in}
+Can we come up with $P(X=1)?$  What about if we flip 10 coins?  100 coins?  1000 coins?  We want to transition from counting to making 'distributional assumptions' about $X$ to make our life easier.

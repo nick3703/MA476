@@ -1,0 +1,99 @@
+---
+title: "Lsn14"
+author: "Clark"
+header-includes:
+   - \usepackage{bbm}
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Admin
+
+Warmup Problem:
+
+Let $X_1 \sim Exp(\beta=1)$ and $X_2 \sim Exp(\beta=1/2)$, find the PDF of $Z=\frac{X_1}{X_2}$
+
+\vspace{3.in}
+
+The second method we will talk about using for finding the pdf of a transformed random variable is the method of transformations.  The method come straight from what's commonly called U-substitution in Calculus.  
+
+$P(U \leq u)=P(h(Y)\leq u)=P(Y \leq h^{-1}(u))$
+
+\vspace{.5in}
+
+It's probably worth a note here quick to talk about inverse functions.  While I know we've seen these before, recall that if $h(Y)=z$ is a function mapping $Y$ to $Z$, $h^{-1}(Z)=Y$.  For example if $h(.)=\exp(.)$ then $h^{-1}(.)=\log(.)$.
+
+Our instincts can fail us sometimes on inverse functions though.  For example if $h(x)=x^2=z$, the $h^{-1}(z)=\sqrt{z}$ \textit{only} for $x>0$.  If $x<0$ then $h^{-1}(z)=-\sqrt{z}$.
+
+Our text accounts for this with the following caveat on pg. 313.  Let $Y$ have probabilty density function $f_y(y)$.  If $h(y)$ is \textbf{either increasing or decreasing} for all $y$ in the support of $Y$, then $U=h(Y)$ has density function
+
+\begin{align*}
+f_U(u)=f_Y[h^{-1}(u)] |\frac{dh^{-1}}{du}|
+\end{align*}
+
+So, to summarize, we need to first recognize that $h(.)$ is strictly increasing or decreasing on the support of $y$.  Then we need to find the inverse of $h(.)$, substitute it into the pdf of $y$ and multiply by $|\frac{dh^{-1}}{du}|$.
+
+
+For example:  Let $Z \sim Exp(2)$, find the density function of $U=Z^2$
+
+First we note that the support of $Z$ is $\mathbb{R}^+$.  So, on the support of $Z$, $h(Z)=(Z)^2$ is an increasing function we can employ the transformation method.  
+
+Next we note that $h^{-1}(.)=?$
+
+\vspace{1.in}
+
+
+and $|\frac{dh^{-1}}{du}|=?$.  
+
+\vspace{1.in}
+
+
+We can also calculate:
+
+$f_Y(h^{-1}(u))=f_Y(\sqrt{u})=?$
+
+\vspace{1.in}
+
+So, all together
+
+$f_U(u)=?$
+
+\vspace{1.in}
+
+As it turns out, this is what's called a Weibull distribution.
+
+Note that if our question had been $Z\sim (\mu,\sigma)$ and we were asked to find the density function of $U=Z^2$ we could not use the above technique.  (why?)
+
+Consider a random variable $Y$ that has a uniform distribution on the interval (1,5).  Find the density function of $U=2Y^2+3$
+
+\vspace{3.in}
+
+The same thought process can be extended to multi-variate transformations (though as we will see in Section 6.6, I really like to think of these a bit differently).  In this case, we will let $U=f(y_1,y_2)$ and let $G=y_1$.  We then find the joint density of $U$ and $G=y_1$ and integrate out $y_1$.  Let me show this with an example:
+
+
+Consider $f(y_1,y_2)=\frac{1}{8} y_1 \exp(-(y_1+y_2)/2)\mathbbm{1}{(0 \leq y_1) }\mathbbm{1}{(0 \leq y_2) }$ and say we want to find the density of $U=\frac{Y_2}{Y_1}$.  Here we let $G=Y_1$ and note that $U$ is a decreasing function for $Y_2$.Note now that we are only thinking of $U$ as a function of $Y_2$.  So, $U=h(Y_2)$ and therefore $h^{-1}(u)=u y_1$.
+
+We need a few more pieces.  It follows from above that $Y_2=U*G$, $h^{-1}(u)=U*G$, and clearly $Y_1=G$.  Using this, we can re-write 
+
+\begin{align*}
+f(y_1,y_2)=f(U,G)=
+\end{align*}
+
+After we do this, we next want to marginalize over $G$ by integrating over the support of $G$.  
+
+
+
+\vspace{3.in}
+
+We could do this via Mathematica (Nothing wrong with this!).  OR, we could squint our eyes and realize that this is \textit{almost} a Gamma distribution with $\alpha=3$ and $\beta= \frac{1+U}{2}$
+
+\newpage
+
+As I mentioned above, I don't really like to do this for bivariate transformations.  The reason is it's not technically correct.  We actually need the determinant of the Jacobian of $\boldsymbol{h}^{-1}(U,G)=\left(G,UG\right)=\left(Y_1,Y_2\right)$.  Recall that a Jacobian is:
+
+\vspace{2.in}
+
+We will talk more about this in future lessons, but if we take the determinant of the Jacobian we end up with:

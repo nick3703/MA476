@@ -1,0 +1,68 @@
+---
+title: "Lsn33"
+author: "Clark"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Admin
+
+##Review Writ
+
+\vspace{3.in}
+
+Problem 10.6, n=50
+
+\vspace{3.in}
+
+Recall that in many instances we can rely on the Central Limit Theorem to find the distribution of
+
+$$Z=\frac{\hat{\theta}-\theta}{\sigma_{\hat{\theta}}}$$
+
+In those instances we have a natural way to formulate statistical hypothesis tests.  For example, let's look at the following problem.  A vice president in charge of sales for a large corporation claims that salespeople are averaging no more than 15 sales contacts per week.  As a check on his claim $n=36$ salespeople are selected at random, and the number of contacts made by each is recorded for a single randomly selected week.
+
+What is $H_0$ and $H_a$ in this instance?
+
+\vspace{2.in}
+
+If we use $Z=\frac{\bar{Y}-\mu_0}{\sigma_{\bar{Y}}}$ as our test statistic, what assumptions are we relying on if we say $Z\sim N(0,1)$?
+
+\vspace{2.in}
+
+What is the rejection region if we are only willing to risk a probability of .05 of committing a Type I error?
+
+\vspace{2.in}
+
+If $\bar{Y}=17$ and $S=9$ is $Z$ in the rejection region?  What is our conclusion?
+
+
+\vspace{2.in}
+
+The key to these problems when $n$ is large is relying on table 8.1.  In these caes we can use the CLT, but oftentimes we have to think about how we can estimate the standard error.  For $\bar{Y}$ it makes sense to use the unbiased estimator of $S^2$ for $\sigma^2$.  When we are using the CLT for $\hat{p}$ we have to remember that we calculate the distribution of our test statistic under $H_0$.  So, under $H_0$ the best estimate for $\sqrt{\frac{pq}{n}}$ is not $\sqrt{\frac{\hat{p}\hat{q}}{n}}$ but rather $\sqrt{\frac{p_0q_0}{n}}$
+
+For example:
+
+We can do the same sort of problems with other statistics, let's look at problem 10.32.  In March 2001, a Gallup poll asked, "How would you rate the overall quality of the environment in this country today?"  Of 1060 adults nationwide, 46\% said excellent or good.  Is this convincing evidence that a majority of the nation's adults think the quality of the environment is fair or poor?
+
+
+\vspace{3.in}
+
+As another example:
+
+The commercialism of the U.S. space program has been a topic of great interest since Dennis Tito paid $20 million to ride along with the Russian cosmonauts on the spac eshuttle.  In a survey of 500 men and 500 women, 20\% of the men and 26\% of the women responded that space should be commericial free.
+
+Does statistically significant evidence exist to suggest that there is a difference in the population proportions of men and women who think that space should remain commercial free?
+
+Write out our null hypothesis, alternative hypothesis, and test statistic.
+
+\vspace{3.in}
+
+Assuming a .05 level test what is our rejection region.
+
+\vspace{1.in}
+
+What is the rejection region in terms of $p_1-p_2$?  
+

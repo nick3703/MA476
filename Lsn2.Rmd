@@ -1,0 +1,80 @@
+---
+title: "MA476 - Lesson 2"
+author: "Clark"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Admin
+Introductions
+
+Questions from Last lesson - 2.18 in WMS
+
+#Counting Review
+$P(A)=\frac{n_a}{n}$, so need a way to come up with numerator and denominator.
+
+Combinations vs. Permutations
+
+\vspace{.5in}
+
+Putting this together - WMS 2.59. Five cards are dealt from a standard 52-card deck.  What is the probability that the draw will yield a straight?
+
+$n=?$
+
+\vspace{.4in}
+
+$n_a=?$
+
+\vspace{.4in}
+
+Other Theorem that might help (Theorem 2.3).
+
+#Conditional Probability
+Let's start with a picture
+
+\vspace{2.in}
+
+When we condition we decrease $n$ in the denominator of $P(A)=\frac{n_a}{n}$.  The exact calculation becomes:
+\begin{equation*}
+P(A|B)=\frac{P(A \cap B)}{P(B)}
+\end{equation*}
+
+Or, are new measure $P(.|B)$ is found by measuring the size of $A \cap B$ and dividing by the size of $B$.
+
+Let's take a moment and prove that this new probability $P(.|B)$ is actually a valid probability given that $P(B)$ is a probability.  Recall that to show something is a probability we have to show that the three Axioms are met. For any event $E \subset F$ we must have
+
+$0 \leq P(E|B)$
+
+\vspace{2.in}
+
+$P(S|B)=1$
+
+\vspace{2.in}
+
+$P(\bigcup\limits_{i=1}^{\infty} E_{i}|B)=\sum\limits_{i=1}^{\infty}P(E_i|B)$ for all pairwise disjoint $E_i$ and $E_j$
+
+\newpage
+So anything we can do with a probability we can do with a conditional probability.  Our book also defines the (very important) notion of independence as $P(A|B)=P(A)$ (which a lot of 206 students confuse with mutually exclusive, look at Example 2.15 to clarify)
+
+Independence and conditional probability will help us find probabilities when it is too cumbersome or impossible to find $n_a$ and $n$ and directly calculate the probabilities.  These notions are especially helpful when they are combined with the \textbf{multiplicative law of probability} and the \textbf{additive law of probability}.  In my opinion the laws themselves are not so difficult, but oftentimes it is hard to put it all together.  But this really is the key, break the problem down into smaller more manageable parts.
+
+Let's work through one:
+
+A true-false question is to be posed to a two Cadet team on a quiz show.  Both Cadets will independently give the correct answer with probability $p$.  Which of the following is a better strategy?
+
+-Choose one of them at random and let that person answer the question
+
+-Have them both consider the question, and then either give the common answer if they agree, or if they disagree, flip a coin to determine which answer to give.
+
+\vspace{3.in}
+
+If $p=.6$ and the couple uses strategy 2, what is the conditional probability that the couple gives the correct answer given that the husband and wife agree?  disagree?
+
+\vspace{3.in}
+
+#2.120 a. and b. WMS
+
+Think.  How many \textit{slots} are there available to place the defective refrigerators in?  What about if one has to be in slot 4?

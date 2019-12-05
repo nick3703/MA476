@@ -1,0 +1,98 @@
+---
+title: "Lsn13"
+author: "Clark"
+header-includes:
+   - \usepackage{bbm}
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Admin
+
+For the next several lessons we are going to be talking about transformation of Random Variables.  We've actually seen this a bit before.  Recall that if $Y \sim N(0,1)$ we could use MGFs to show that $Z=-3Y+4$ is still Normally distributed:
+
+\vspace{1.in}
+However, if we had $U=Y^2$, we can immediately state that $U$ cannot be Normally distributed.  Why?
+
+\vspace{1.in}
+
+While this may look like a new topic.  In fact this is related to variable transformations (including u-substitution) that you did in MA205.
+
+In general, when presented with a transformation of a Random Variable we will have three methods to figure out what our new random variable is.  We have the method of distribution functions (commonly called the 'CDF' method).  We have the method of transformations (what we did in MA205/104/153/etc.).  And we have have the method of moment generating functions (shown above).  
+
+#The CDF method
+
+The CDF method is, perhaps, best shown through an example.  Let's let $Y \sim \mbox{Unif} (1,2)$ and say we want to find the distribution of $U=3Y+1$.  
+
+Step 1.)  Write down a formula for the CDF of $U$ and put the inequality in terms of $Y$.  Pay special attention to what values $U$ can take on with positive probability.
+
+$P(U \leq u)$=
+
+\vspace{.4in}
+
+Step 2.)  Set up the integral to solve this probability.  Remember here you are integrating over \textbf{y} so your bounds must take this into account.  When your integral is completed it should \textit{only} be in terms of $u$.
+
+\vspace{.4in}
+
+Step 3.) Differentiate your function of $u$ you found above wrt $u$
+
+\vspace{.5in}
+
+Step 4.)  Make sure you stipulate the support of $u$.  This will NOT necessarily be the same as the support of $y$.
+
+\vspace{.5in}
+
+The great thing about this is we have a couple of ways to 'check' our work.  The first is, when we are done, we have a valid pdf of $u$.  We should be able to integrate this over the support of $u$ and get 1.
+
+The second way to sort of check our work (and I'm sure COL Watts would roll her eyes at me here!) is to simulate from our transformation.  For example:
+
+```{r}
+y<-runif(1000,1,2)
+u<-3*y+1
+hist(u)
+```
+
+Note this is \textbf{NOT} a proof or a valid way to find a pdf.  BUT if we claim something is Uniform and it looks exponential, well, we should go back and check our work!
+
+Let's try one that perhaps is a bit more complicated.  Let's like $X \sim \mbox{Unif} (0,1)$ and say we want to find the distribution of $U= -3 \log X$.  
+
+\vspace{3.in}
+
+In a multivariate setting the sampe technique can be used.  Let's look at example 6.2 in the text.  $f(y_1,y_2)=3 y_1 \mathbbm{1}{(0 \leq y_2 \leq y_1) }\mathbbm{1}{(0 \leq y_1\leq 1) }$ and we want to find $U=Y_1 - Y_2$.  
+
+Here first we write $P(U \leq u)=P(Y_1 - Y_2 \leq u)$.  While we may want to throw up our hands here and say we've never seen this before, if I let $u=.3$ can we use the joint density of $f(y_1,y_2)$ to find $P(Y_1 - Y_2 \leq .3)$?  Let's draw the picture.
+
+\vspace{4.in}
+
+Note: it's really easy to set up our integrals incorrectly here.  But as the book points out, it's easier to get at the smaller triangle here.
+
+Let's try another one.  Consider $f(x,y)=2 \mathbbm{1}{(0 < x < 1) }\mathbbm{1}{(0 < y < x) }$.  Draw, on the board, the joint density considered here.  
+
+\vspace{3.in}
+
+Now.  Let's consider $V=X+Y$.  Using the CDF method we have $F(v) = P(V \leq v)=P(X+Y \leq v)$.  Draw, on the board, the line $V=X+Y$.  What values can $V$ take on?
+
+\vspace{1.in}
+
+If $v \in (0,1]$ what shape are we integrating?
+
+\vspace{2.in}
+
+Is this the same shape if $v \in (1,2)$?  
+
+Let's find, in both cases $P(X+Y \leq v)$  Note as shown above we are going to have to do this over two pieces.
+
+For $v \in (0,1]$, $P(X+Y \leq v)=$
+
+\vspace{2.in}
+
+For $v \in (1,2)$, $P(X+Y \leq v)=$
+
+Altogether, we have:
+
+\vspace{2.in}
+
+DON'T FORGET THE SUPPORT!

@@ -1,0 +1,40 @@
+---
+title: "Lsn18"
+author: "Clark"
+header-includes:
+   - \usepackage{bbm}
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Admin
+
+
+Review.  We started with defining Random Variables as mappings from a Sample space to the Real line and last class we discussed special functions of our random variables that we call \textit{Statistics}.  In some cases we are able to find out the exact distribution of our Statistic.  For instance, let $Y_1,\cdots,Y_n$ be iid samples from a Poisson distribution with parameter $\lambda$ and say our statistic is $T=\sum_{i=1}^n Y_i$.  What is the sampling distribution for $T$?
+
+
+\vspace{3.in}
+
+However, is this really a useful statistic if we want to make inference for $\lambda$?  In general, we want our statistics to give us information about some parameter of interest and one statistic that is often helpful is $\bar{Y}=n^{-1}\sum_{i=1}^n Y_i$.  However, knowing the sampling distribution of $\bar{Y}$ may not be entirely obvious.  Let's try to do it for Poisson.
+
+\vspace{3.in}
+
+While the exact sampling distribution may be unknown, as it turns out the \textit{limiting distribution} for $\bar{Y}$ may be known due to the Central Limit Theorem (CLT).
+
+Let's look at it on pg. 376.
+
+What is this saying?
+
+If we have $E[Y_i]=\mu$ and $Var[Y_i]=\sigma^2$ what is the distribution for $\bar{Y}$?
+
+
+\vspace{3.in}
+
+Let's go back to our Poisson.  What is the distribution for $\bar{Y}$ as $n$ gets sufficiently big?
+
+\vspace{2.in}
+
+Can we use this to make inference for $\lambda$?

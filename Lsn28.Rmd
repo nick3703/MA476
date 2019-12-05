@@ -1,0 +1,63 @@
+---
+title: "Lsn28"
+author: "Clark"
+header-includes:
+   - \usepackage{bbm}
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Admin
+
+Up to this point we've been talking about properties of point estimators and comparing/evaluating what makes something a good point estimator.  Remember that a point estimator is
+
+\vspace{2.in}
+
+However, we have not give you a tool for actually finding a point estimator.  One of the most straight forward ways to estimate a parameter, or a function of parameters, is the \textit{method of moments}.  Recall that the $k$th moment of a random variable is:
+
+\vspace{2.in}
+
+What the method of moments does is use the \textit{sample moment} to estimate the \textit{population moment}.  The $k$th sample moment is:
+
+\vspace{2.in}
+
+For example, if $X_1, X_2, \cdots, X_n$ come from a Poisson distribution, the first moment is $\lambda$.  Therefore, in order to esimate $\lambda$ the MOM says to use $\bar{X}$ as an estimate.  In this case, we might think this is a pretty good estimate.
+
+It's unbiased:
+
+\vspace{1.in}
+
+It's consistent:
+
+\vspace{1.in}
+
+It is a function of the sufficient statistic:
+
+\vspace{1.in}
+
+So, I guess, yay?  But herein lies the first of seeveral issues with the MOM.  It does not necessarily yield a unique estimate.  If $X \sim Po(\lambda)$ what is $E[X^2]$?
+
+\vspace{2.in}
+
+So, we could also use the second sample moment to estimate $\lambda$.  If we do this, our esimate is no longer unbiased.
+
+\vspace{2.in}
+
+So while the MOM doesn't necessarily yield the best estimator, it does potentially serve as a start point.  And if it turns out it yields an unbiased estimator that is a function of a sufficient statistic, then we likely have the MVUE.
+
+Again, the steps of using the MOM estimator are:  First find the population moment, equate the population moment with the sample moment, then simplify if necessary.
+
+Let's work problem 9.69
+
+\vspace{3.in}
+
+Sometimes we need more than one moment to find an estimator for our parameters.  Let's let $Y_1,\cdots,Y_n \sim \mbox{Gamma}(\alpha,\beta)$.
+
+The MOM becomes:
+
+\vspace{3.in}
+
+Let $Y_1,\cdots,Y_n \sim N(\mu,\sigma^2)$  Find the MOM for $\mu$ and $\sigma^2$.  

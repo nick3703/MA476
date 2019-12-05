@@ -1,0 +1,85 @@
+---
+title: "Lsn32"
+author: "Clark"
+header-includes:
+   - \usepackage{bbm}
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Admin
+
+A statistical hypothesis is a claim about the distribution of one or more random variables.  When we test a statistical hypothesis we are using the data to make a claim about how plausible the hypothesis is.  For example, we might claim that the probability of rolling a six is 1/6.  In other words, if we let $X$ be the number of 6s we roll out of ten trials we might say
+
+$$X\sim \mbox{Binom}(10,p=1/6)$$
+
+Here our claim is that our parameter, $p$ is 1/6.  If we roll our die 10 times and we obtain 3 sixes, is our claim correct?  Well... maybe?  It's hard to judge the claim without an idea of other values that $p$ could take on.  For example, let's say we have one fair die and one unfair die where $p=1/3$.  If we roll our die 10 times and we obtain 3 sixes is it more likely that our die is fair or unfair?  How can we tell?
+
+Well, if $p=1/6$ then the probability of rolling 3 sixes is .155, if $p=1/3$ the probability of rolling 3 sixes is .26.  So should we conclude $p=1/3$?
+
+Let's consider this another way.  Let's say that if $p=1/3$ and you guess $p=1/3$ you win 10 dollars.  However if $p=1/6$ and you guess $p=1/6$ you win 100 dollars.  If you roll our die 10 times and get 3 sixes what would you guess?
+
+
+\vspace{3.in}
+
+What we went through above is the basics of statistical hypothesis tests.  When we conduct a statistical hypothesis test we need to know what our null hypothesis is, what our alternative hypothesis is, what our test statistic is, and what our rejection region is.
+
+Let's take the above example and go through it.  In the absence of any data, would you guess that $p=1/6$ or $p=1/3$ given that you win 10 dollars on a bet of $p=1/3$ and 100 dollars on a bet of $p=1/6$?
+
+\vspace{1.in}
+
+Therefore, unless the data convince us, we should conclude that $p=1/6$.  Our test statistic is how we will test our data.  What is our test statistic in this case?
+
+\vspace{1.in}
+
+Our rejection region is the realized values of our test statistic that will convince us to switch our bet from $p=1/6$ to $p=1/3$.  For instance, if $X=1$ would we want to switch our bet?  What about $X=5$?  Think about what values of $X$ would convince you to switch your bet from $p=1/6$ to $p=1/3$.
+
+\vspace{2.in}
+
+A type I error is made if we switch our bet when we shouldn't have.  $\alpha$is the probability of obtaining our rejection region under $H_0$.  For your rejection region, find $\alpha$.
+
+\vspace{1.in}
+
+If $\alpha$ is too high or too low for your liking you can adjust your rejection region.  Do so now if you want to.
+
+\vspace{1.in}
+
+Conversely, a Type II error is made if you fail to switch your bet but you should have.  Meaning $X$ wasn't in your rejection region but $p=1/3$.  Find the probabilty of committing a Type II error.
+
+\vspace{2.in}
+
+What we went through above is an example of a simple vs. simple hypothesis testing.  This is a bit different then the hypothesis testing that is done in MA206/256, but is perhaps more intuitive.  It is, perhaps, more common to use composite hypothesis.  That is $p = 1/6$ vs $p>1/6$.  Now we aren't comparing $p=1/6$ to $p=1/3$, but rather comparing $p=1/6$ to $p \in (1/6,1]$.  Let's say in this instance we decide to roll our die 10 times and reject if $x \geq 3$.  Let's calculate $\alpha$.
+
+
+\vspace{2.in}
+
+Now finding the probabilty of conducting a Type II error is a bit more difficult.  Recall that a Type II error is made if $H_a$ is true.  So, if $H_a$ is true we don't  \textit{know} p, but we know it's NOT 1/6.  For instance, if $p=1/3$ the probability of conducting a Type II error is:
+
+\vspace{2.in}
+
+However, if $p=1/5$ it is:
+
+\vspace{2.in}
+
+If $p=1/2$ it is:
+
+\vspace{2.in}
+
+So here we have to specify what our alternative is in order to find the probability of conducting a Type II error.  
+
+Let's work 10.6 from the text.
+
+\vspace{2.in}
+
+Now let's rework 10.6, but instead let's toss the coin 50 times.  Find the rejection region matching the $\alpha$ value we found above.  
+
+\vspace{1.in}
+
+For this rejection region find the value of $\beta$ if $p=.7$.
+
+\vspace{1.in}
+
+What does this tell us about making a good test?

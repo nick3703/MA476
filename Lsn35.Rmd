@@ -1,0 +1,60 @@
+---
+title: "Lsn35"
+author: "Clark"
+header-includes:
+   - \usepackage{bbm}
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Admin
+
+Recall if we are testing $H_0: \theta = \theta_0$ vs. $H_a: \theta > \theta_0$ our test statistic is:
+
+\vspace{2.in}
+
+In this case, we also note that this implies a distribution of $\hat{\theta}$ of:
+
+\vspace{1.in}
+
+Which we can draw as:
+
+\vspace{3.in}
+
+Even if $H_0$ is true, there is a probabilty of $\alpha$ that $P(Z>z_{\alpha})$ for any $z_{\alpha}$ which corresponds to $P(\hat{\theta} > k)=\alpha$, for $k=z_{\alpha}\sigma_{\hat{\theta}}+\theta_0$.  Which we can denote on our picture above.
+
+Similarly, if we have $H_0: \theta = \theta_0$ vs. $H_a: \theta < \theta_0$, for any fixed $\alpha$ we can find $k$ such that $P(\hat{\theta} < k)=\alpha$.  In which case we have the drawing:
+
+\vspace{2.in}
+
+The only slight complication is when we are testing $H_0: \theta = \theta_0$ vs. $H_a: \theta \neq \theta_0$.  In this case, in terms of our test statistic $Z$ we would reject $H_0$ if $Z$ fell in the region ${|z|>z_{\alpha/2}}$ where $z_{\alpha/2}$ is found by fixing $\alpha$ and solving for $z_{\alpha/2}$ in the statement $P(-z_{\alpha/2}<Z<z_{\alpha/2})=\alpha$.  Our drawing here is:
+
+\vspace{2.in}
+
+Note here that if $Z$ is NOT in our rejection region that it must be that:
+
+\vspace{1.in}
+
+Or, in other words, the null hypothesis is not rejected if:
+
+\vspace{1.in}
+
+Here we note the similarities between being NOT in the null hypothesis and forming a confidence interval based on the pivoting the test statistic $Z=\frac{\hat{\theta}-\theta_0}{\sigma_{\hat{\theta}}}$.  So, for a two sided test, if we form a confidence inteval for $\theta$ and $\theta_0$ is outside of the 95\%CI we would reject $H_0$.  
+
+\newpage
+
+Similarly a large sample $\alpha$-level test of hypothesis for $H_0: \theta=\theta_0$ vs $H_a: \theta > \theta_0$ we would reject the null hypothesis if
+$$ \frac{\hat{\theta}-\theta_0}{\sigma_{\hat{\theta}}} > z_\alpha$$
+
+Let's show that this is equivalent to rejecting $H_0$ if $\theta_0$ is less than the large-sample $100(1-\alpha)\%$ lower confidence bound for $\theta$.
+
+First, using the acceptance region, find, in terms of our parameters above, what values of $\theta_0$ would cause us to accept $H_0$ (I know.  In MA206 they say, never say accept $H_0$...  But in practice it really doesn't matter.)  
+
+\vspace{1.in}
+
+Now.  Calculate a one sided lower confidence bound for $\theta$.  Remember we need to use a Pivotal quantity.  Probably makes sense to use $\frac{\hat{\theta}-\theta}{\sigma_{\hat{\theta}}}\sim N(0,1)$ as our pivotal quantity.  Then we need to find $z$ such that $P(\frac{\hat{\theta}-\theta}{\sigma_{\hat{\theta}}} \leq z)=1-\alpha$ and isolate $\theta$ in the above inequality.
+
+\vspace{2.in}

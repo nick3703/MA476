@@ -1,0 +1,59 @@
+---
+title: "MA476 Lsn 4"
+author: "Clark"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Admin
+
+-HW Due
+
+-Next HW is posted to website, due Lesson 7
+
+
+Recall a random variable, $X(s)$ is a mapping from events in our sample space to $\mathbb{R}$.  A random variable, $X(s)$ is discrete if the values $X(s)=x$ where $P(X(s)=x)>0$ is contained within the set of integers.  Or, in other words, the values of $x$ where $P(X(s)=x)>0$ are either finite or countably infinte.  Note from here on out, we will usually drop the $(s)$ and just write $X$ while keeping in mind that a random variable is a function of points within our sample space.
+
+However, note definition 3.2 in WMD.  We could either calculate probabilities on our sample space directly or we can think of $P(Y=y)$ as the sum of the probabilities of all values of $s \in S$ such that $Y(s) \to y$.
+
+#Some important theorems/definitions/results
+
+We let $p(y)$ be the probability distribution and we note that our probability distribution is a well defined probability.  That is, $p(y) \in [0,1]$ for all $y$ and $\sum_y p(y)=1$.  
+
+The probability distribution of a discrete random variable $Y$ is given by $p(y)= c \lambda^y/y!$.  Using the identity $e^{\lambda}=\sum_{y=0}^\infty \lambda^y/y!$ find $c$.
+
+\vspace{2.in}
+
+Find $P(Y > 2)$
+
+\vspace{2.in}
+
+#Expected Value
+
+We \textit{define} the expected value of $Y$ as $E[Y]=\sum_y y p(y)$.  In teneral, we can caluate the expected value for any function of $Y$ say $g(Y)$ as $E[g(Y)]=\sum_y g(y) p(y)$.
+
+
+
+Some very important properties of expectation are given in Theorems 3.3, 3.4, and 3.5 in WMD.  
+
+Theorem 3.3 says that the expected value of a constant is a contant.  That is, if $c$ is any fixed number, $E[c]=c$.   Constants can be multiplied by a variable.  If we recall that $X\sim \mbox{Binomial}(n,p)$ means that $E[X]=np$.  Then if we wanted to calculate $E[3 X]$ we would have $E[3X] = 3np$.  If we wanted $E[X+3]$ we would have $E[X+3]=3+np$.
+
+Putting theorems 3.3-3.6 all together gives us a convenient way to find the Variance of a random variable.  Recall that $V(Y)=E[(Y-\mu)^2]$.  By 3.6 we can take a shortcut and say that $V(Y)=E(Y^2)-E(Y)^2$.  
+
+\newpage
+
+A single fair die is tossed once.  Let $Y$ be the number facing up.  Find the expected value and variance of $Y$.
+
+\vspace{3.in}
+
+A person tosses a fair coin until a tail appears for the first time.  If the tail appears on the $n$th flip, the person wins $2^n$ dollars.  Let $X$ denote the player's winnings.  Show that $E[X]=\infty$.
+
+\vspace{4.in}
+
+Would you be willing to pay $1 million to play this game once?  Does this contradict what you found above?
+
+
+

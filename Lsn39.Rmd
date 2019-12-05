@@ -1,0 +1,40 @@
+---
+title: "Lsn39"
+author: "Clark"
+header-includes:
+   - \usepackage{bbm}
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Admin
+Last lesson we talked about how the Neyman Pearson lemma can be used to create Statistical tests about unknown parameters from any statistical model.  However, as we showed UMP tests don't exist for all pairs of hypotheses.  For example, $H_0: \theta=\theta_0$ vs $H_a: \theta \neq \theta_0$.  
+
+When we cannot rely on NP, we still have hope using Likelihood Ratio Tests (LRT).  A LRT is found by forming the ratio:
+
+\vspace{2.in}
+
+Note here our $H_0: \Theta \in \Omega_0$ and $H_a: \Theta \in \Omega_a$.  This might look complicated, but let's tear it apart.  Note in general our allowable parameter spae is $\Theta \in \Omega$ and $\Omega_0 \cup \Omega_a = \Omega$ implies that our entire parameter space is covered by our null and alternative hypotheses.
+
+The rejectoion region is determined by $\lambda < k$ where $k$ is chosen corresponding to a set $\alpha$.
+
+If we look at the denominator of the LRT it is $\hat{\theta}_{mle}$.  Our Numerator can be thought of as the MLE of $\theta$ when $\theta$ is restricted to $\Omega_0$.
+
+For example, let's consider $U_1,\cdots, U_n \sim Unif(0,\theta)$ and let's consider the LRT of $H_0: \theta=1$ vs $H_a: \theta \neq 1$.
+
+\newpage
+
+For another example, let's consider the exponential distribution and test $H_0: \theta \leq \theta_0$ vs $H_a: \theta > \theta_0$
+
+\vspace{3.in}
+
+LRT can also be used if we have what are sometimes refered to as nuisance parameters.  For instance, let's consider letting $Y_1,Y_2,\cdots,Y_n \sim N(\mu,\sigma^2)$.  Say we want to test $H_0: \sigma^2 \leq \sigma_0^2$ vs $H_a: \sigma^2> \sigma_0^2$.  Here we don't know $\mu$ nor do we really \textit{care} what $\mu$ is.
+
+\newpage
+
+On a final note, it is exceedingly rare that we know the distribution of the LRT statistic.  More often than not we have to rely on asymptotics to give us the distribution.  In this case $-2\log (\lambda) \sim \chi^2_{r_0-r}$ where $r_0$ is the number of free parameters in $H_0$ and $r$ is the number of free parameters in $H_a$.
+
+Let $X_1, X_2, \cdots, X_m$ denote a random sample from the exponential density with mean $\theta_1$ and let $Y_1, Y_2, \cdots, Y_n$ denote a random sample from the exponential density with mean $\theta_2$.  Let's find the likelihood ratio test for testing $H_0: \theta_1=\theta_2$ vs $H_a: \theta_1 \neq \theta_2$
