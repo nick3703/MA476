@@ -93,7 +93,7 @@ Let's put this all together:
 
 \vspace{3.in}
 
-Now, we have our discrete sample space, a way to come up with events of interest (any set  $A\subset S$), and a way to assign probabilities to $A$.
+Now, we have our discrete sample space, a way to come up with events of interest (any set  $A$ consisting in events from $S$), and a way to assign probabilities to $A$.
 
 # Admin
 Introductions
