@@ -1,5 +1,5 @@
 ---
-title: "MA376 Lesson 1"
+title: "MA476 Lesson 1"
 author: "Clark"
 output: pdf_document
 ---
@@ -13,11 +13,10 @@ LTC Nick Clark
 
 nicholas.clark@westpoint.edu
 
-Thayer Hall Room 249
+Thayer Hall Room 229
 
-845-938-7461
 
-#Course Overview
+# Course Overview
 
 \textit{Mathematical } Statistics
 
@@ -35,10 +34,10 @@ Thayer Hall Room 249
 
 -Hypothesis testing
 
-#Set Notation
+# Set Notation
 
 A picture: 
-\vspace{.5in}
+\vspace{1.in}
 
 $S=\{s_1,s_2,s_3,s_4\}$
 
@@ -50,9 +49,12 @@ We can write:
 
 $B=\{s_2,s_4\}$
 
-$A\cup B=$    
+$A\cup B=$
+\vspace{.3in}
 
 $A \cap B=$
+\vspace{.3in}
+
 
 Oftentimes Venn Diagrams help us understand what is going on.  For example, DeMorgan's Laws state:
 \begin{align*}
@@ -62,9 +64,11 @@ Oftentimes Venn Diagrams help us understand what is going on.  For example, DeMo
 picture:
 \vspace{2.in}
 
-#Problem 2.7 in WMS
+# Problem 2.7 in WMS
 
-Now.  None of this has anything to do with probability or statistics.  Set theory is a tool, like Caculus is a tool, that can potentially help us.  But let's go back to probability theory.  We are going to define a \textbf{Probability Space} which consissts of three things.  A sample space, a list of events we are potentially interested in, and probabilities of those events occurring.  We will start with \textbf{Discrete } outcomes.
+\newpage
+
+Now.  None of this has anything to do with probability or statistics.  Set theory is a tool, like Caculus is a tool, that can potentially help us.  But let's go back to probability theory.  We are going to define a \textbf{Probability Space} which consists of three things.  A sample space, a list of events we are potentially interested in, and probabilities of those events occurring.  We will start with \textbf{Discrete } outcomes.
 
 Sample space: $S=\{\mbox{Roll a 1}, \mbox{Roll a 2}, \mbox{Roll a 3}, \mbox{Roll a 4}, \mbox{Roll a 5}, \mbox{Roll a 6}\}$
 
@@ -76,7 +80,7 @@ What are some events we might be interested in?  For any events, $A$ and $B$, wh
 
 Simple events vs. compound events.
 
-#Probability
+# Probability
 Last part of our probability space.  What is probability?
 
 Technically a probability is a set function that \textit{measures} an event.  Let's look at \textbf{Definition 2.6}.  
@@ -87,15 +91,15 @@ One way to assign a probability to a discrete sample space is to use relative fr
 
 Let's put this all together:
 
-\vspace{5.in}
+\vspace{3.in}
 
 Now, we have our discrete sample space, a way to come up with events of interest (any set  $A\subset S$), and a way to assign probabilities to $A$.
 
-#Admin
+# Admin
 Introductions
 
 Homework
 
 Next Lesson
 
-#Start with 2.18 in WMS
+# Start with 2.18 in WMS
