@@ -1,5 +1,5 @@
 ---
-title: "MA476 Lesson 1"
+title: "STAT 314 Lesson 1"
 author: "Clark"
 output: pdf_document
 ---
